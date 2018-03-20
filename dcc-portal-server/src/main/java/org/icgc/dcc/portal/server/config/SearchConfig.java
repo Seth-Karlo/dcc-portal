@@ -67,7 +67,8 @@ public class SearchConfig {
     val client = createTransportClient(elastic.getClient());
     for (val nodeAddress : elastic.getNodeAddresses()) {
       log.info("Configuring ES node address: {}", nodeAddress);
-      checkState(InetAddress.getByName(nodeAddress.getHost()).isReachable((int) SECONDS.toMillis(5)));
+      // Ping is not a good check >.<
+      // checkState(InetAddress.getByName(nodeAddress.getHost()).isReachable((int) SECONDS.toMillis(5)));
 
       client.addTransportAddress(new InetSocketTransportAddress(
           getByName((nodeAddress.getHost())),
