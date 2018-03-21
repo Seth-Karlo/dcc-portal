@@ -2,3 +2,4 @@ steps:
 - name: 'eu.gcr.io/hmf-icgc-portal-po-4106739/portal-server-builder:latest'
   args: ['mvn', '-pl', 'dcc-portal-server', '-Dmaven.test.skip=true']
 images: ['gcr.io/hmf-icgc-portal-po-4106739/dcc-portal-server']
+timeout: 2000
