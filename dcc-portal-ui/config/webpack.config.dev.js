@@ -33,11 +33,6 @@ module.exports = {
   },
   module: {
     preLoaders: [
-      {
-        test: /\.js$/,
-        loader: 'eslint',
-        include: paths.appSrc,
-      }
     ],
     noParse: /node_modules\/lodash\/lodash\.js/,
     loaders: [
