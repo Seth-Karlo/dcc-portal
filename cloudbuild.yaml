@@ -1,5 +1,9 @@
 steps:
-- name: 'eu.gcr.io/hmf-icgc-portal-po-4106739/portal-server-builder:latest'
-  args: ['mvn', '-pl', 'dcc-portal-server', '-Dmaven.test.skip=true']
-images: ['gcr.io/hmf-icgc-portal-po-4106739/dcc-portal-server']
-timeout: 2000s
+- name: 'eu.gcr.io/$PROJECT_ID/hmf-icgc-image-builder:latest'
+  args: ['mvn', '-T', '1C', '-pl', 'dcc-portal-server', '-Dmaven.test.skip=true']
+  id: mvn
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-f', 'dcc-portal-server/Dockerfile', '-t', 'eu.gcr.io/$PROJECT_ID/$REPO_NAME-server:$COMMIT_SHA', 'dcc-portal-server/']
+  waitFor: ['mvn']
+images: ['eu.gcr.io/$PROJECT_ID/$REPO_NAME-server']
+timeout: 2400s
