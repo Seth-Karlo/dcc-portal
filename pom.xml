@@ -101,6 +101,7 @@
   </dependencies>
 
   <properties>
+    <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
     <!-- Versions - DCC -->
     <dcc-common.version>4.3.11</dcc-common.version>
     <dcc-download.version>4.3.11</dcc-download.version>
